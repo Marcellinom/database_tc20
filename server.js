@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 let port = process.env.PORT || 3000 
 
-app.listen(port, () => { console.log('listening to http://localhost:'+port+'/'+5025201105);
+app.listen(port, () => { console.log('listening to http://localhost:'+port);
     app.get('/:in', (req,res) => {
         async function getWithNRP(nrp)
         {
@@ -23,6 +23,6 @@ app.listen(port, () => { console.log('listening to http://localhost:'+port+'/'+5
     });
 
     app.get('/', (req,res) => {
-        res.send('<p>Usage:</p><p>/{nrp} => cari pake nrp (harus lengkap ya)</p><p>/{nama} => cari pake nama (bisa nama lengkap/nama singkat) => bakal nge return array kalo ada yg sama namanya (lagian nama pasaran :v)</p><p>on development: https://github.com/Marcellinom/database_tc20 (tenang data kalian di encrypt)</p>');
+        res.send('<p>Usage:</p><p>/{nrp} => cari pake nrp (harus lengkap ya)</p><p>/{nama} => cari pake nama (bisa nama lengkap/nama singkat) => bakal nge return array kalo ada yg sama namanya (lagian nama pasaran :v)</p><p>on development: <a href="https://github.com/Marcellinom/database_tc20">https://github.com/Marcellinom/database_tc20</a> (tenang data kalian di encrypt) ;)</p>');
     })
 })
