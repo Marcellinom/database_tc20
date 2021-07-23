@@ -20,6 +20,6 @@ module.exports = {
             else index++;
             if(timerun++ > 50) return 404;
         }
-        return data[index];
+        return [data[index]];
     }
 }
