@@ -1,2 +1,4 @@
 node_modules/
+modules/storage/tc20.json
+encrypt.js
 .env

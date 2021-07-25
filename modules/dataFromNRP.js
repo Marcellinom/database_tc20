@@ -1,11 +1,7 @@
-const fs = require('fs');
-const { decrypt } = require('./cryp');
+const data = require('./DataRead');
 
 module.exports = {
     execute: (nrp) => {
-        const raw_e = fs.readFileSync('./modules/storage/tc20_e.json');
-        const raw = decrypt(JSON.parse(raw_e));
-        const data = JSON.parse(raw);
         let num = Number(nrp);
         if(isNaN(num) || num > 5025201276 || num < 5025201002) return 404;
 

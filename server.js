@@ -3,29 +3,41 @@ const app = express();
 require('dotenv').config()
 let port = process.env.PORT || 3000 
 
-app.listen(port, () => { console.log('listening to http://localhost:'+port+'/'+5025201105);
+app.listen(port, () => { console.log('listening to http://localhost:'+port);
     app.get('/:in', (req,res) => {
+        const input = req.params.in;
         function valid(header)
         {
             if(header && header == process.env.headtoken)
                 return true;
             return false;
         }
+
         async function getWithNRP(nrp)
         {
+            console.log("get with nrp");
             const data = require('./modules/dataFromNRP').execute(nrp);
             res.send(data);
             console.log("success");
         }
         async function getWithName(name)
         {
+            console.log("get with name");
             const data = require('./modules/dataFromName').execute(name);
             res.send(data);
             console.log("success");
         }
+        async function getWithBirthday(bd)
+        {
+            console.log("get with birthday");
+            const data = require('./modules/dataFromBirthday').execute(bd);
+            res.send(data);
+            console.log("success");
+        }
 
-        !valid(req.headers.token)? res.send(401) :
-        !isNaN(req.params.in)? getWithNRP(req.params.in) : getWithName(req.params.in);
+        !valid(req.headers.token)? res.send(401) : 
+        input.includes('-')? getWithBirthday(input) :
+        !isNaN(input)? getWithNRP(input) : getWithName(input);
     });
 
     app.get('/', (req,res) => {
