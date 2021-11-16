@@ -3,12 +3,12 @@ const app = express();
 require('dotenv').config()
 let port = process.env.PORT || 3000 
 
-app.listen(port, () => { console.log('listening to http://localhost:'+port);
+app.listen(port, () => { 
     app.get('/:in', (req,res) => {
         const input = req.params.in;
         function valid(header)
         {
-            if(header && header == process.env.headtoken)
+            if(header && header == process.env.token)
                 return true;
             return false;
         }
@@ -41,6 +41,6 @@ app.listen(port, () => { console.log('listening to http://localhost:'+port);
     });
 
     app.get('/', (req,res) => {
-        res.send('<p>Usage: Header: {token: (tanya marsel) }</p><p>/{nrp} => cari pake nrp (harus lengkap ya)</p><p>/{nama} => cari pake nama (bisa nama lengkap/nama singkat) => bakal nge return array kalo ada yg sama namanya (lagian nama pasaran :v)</p><p>development on:<a href ="https://github.com/Marcellinom/database_tc20">https://github.com/Marcellinom/database_tc20</a> (tenang data kalian di encrypt) ;)</p>');
+        res.send('<p>Usage: Header: {token: (tanya marsel) }</p><p>/{nrp} => cari pake nrp </p><p>/{nama} => cari pake nama (bisa nama lengkap/nama singkat) => bakal nge return array kalo ada yg sama namanya (lagian nama pasaran :v)</p><p>development on:<a href ="https://github.com/Marcellinom/database_tc20">https://github.com/Marcellinom/database_tc20</a> (tenang data kalian di encrypt) ;)</p>');
     })
 })
